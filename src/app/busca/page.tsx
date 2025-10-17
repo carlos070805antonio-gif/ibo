@@ -1,7 +1,7 @@
 // app/busca/page.tsx
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import ImovelCard from "@/components/card/ImovelCard";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -21,7 +21,7 @@ interface Imovel {
   createdAt: string;
 }
 
-export default function BuscaPage() {
+function BuscaContent() {
   const searchParams = useSearchParams();
   const [ordenacao, setOrdenacao] = useState("recente");
   const [imoveis, setImoveis] = useState<Imovel[]>([]);
@@ -195,5 +195,20 @@ export default function BuscaPage() {
         )}
       </div>
     </section>
+  );
+}
+
+export default function BuscaPage() {
+  return (
+    <Suspense fallback={
+      <section className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-500 mx-auto mb-4"></div>
+          <p className="text-slate-600">Carregando busca...</p>
+        </div>
+      </section>
+    }>
+      <BuscaContent />
+    </Suspense>
   );
 }
