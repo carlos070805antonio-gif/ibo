@@ -4,19 +4,20 @@ import { incrementarVisualizacoes } from "../../../../lib/imoveis";
 
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
+    const numericId = Number(id);
     
-    if (isNaN(id)) {
+    if (isNaN(numericId)) {
       return NextResponse.json(
         { error: "ID inválido" },
         { status: 400 }
       );
     }
     
-    const sucesso = incrementarVisualizacoes(id);
+    const sucesso = incrementarVisualizacoes(numericId);
     
     if (!sucesso) {
       return NextResponse.json(
