@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast, Toaster } from "sonner";
 
-export default function EditImovelPage({ params }: { params: { id: string } }) {
-  const { id } = params; // agora é apenas objeto, sem await
+export default function EditImovelPage({ 
+  params 
+}: { 
+  params: Promise<{ id: string }> 
+}) {
+  const { id } = use(params); // agora é apenas objeto, sem await
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
