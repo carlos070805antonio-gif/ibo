@@ -1,0 +1,66 @@
+{
+  "imoveis": [
+    {
+      "tipo": "Apartamento",
+      "transacao": "locação",
+      "cidade": "Muriaé",
+      "bairro": "Bom Pastor",
+      "quartos": null,
+      "banheiro": 5,
+      "vagas_garagem": 0,
+      "codigo": "IM0007",
+      "preco": 2000,
+      "descricao": "iwwcbhlchb\niuwqgvccvucvu\nubhcqubhqbqhc\nuc3hqcqh",
+      "images": [
+        "https://res.cloudinary.com/dj7uoxm0a/image/upload/v1760481890/utblb3oqpji42aslcq1t.jpg",
+        "https://res.cloudinary.com/dj7uoxm0a/image/upload/v1760481898/bsu6nmmuvrtxkcptafse.jpg",
+        "https://res.cloudinary.com/dj7uoxm0a/image/upload/v1760481905/gyewstzmefshigetnyri.jpg"
+      ],
+      "id": 7,
+      "visualizacoes": 4,
+      "ordem": 5,
+      "createdAt": "2025-10-14T22:45:09.586Z"
+    },
+    {
+      "tipo": "Casa",
+      "transacao": "venda",
+      "cidade": "Muriaé",
+      "bairro": "Cardoso de Melo",
+      "quartos": 3,
+      "banheiro": 2,
+      "vagas_garagem": 2,
+      "codigo": "C-001",
+      "preco": 677,
+      "descricao": "OWEBIEIWE\nHBWECHBIECHC\nUEVUEWVUE",
+      "images": [
+        "https://res.cloudinary.com/dj7uoxm0a/image/upload/v1760493698/rjzcbr61sjgzrbgdz4yb.jpg",
+        "https://res.cloudinary.com/dj7uoxm0a/image/upload/v1760493706/xskpggj2f83bvmo0a0t3.avif"
+      ],
+      "id": 8,
+      "visualizacoes": 16,
+      "ordem": 6,
+      "createdAt": "2025-10-15T02:01:54.258Z"
+    },
+    {
+      "tipo": "Casa",
+      "transacao": "locação",
+      "cidade": "Muriaé",
+      "bairro": "Cardoso de Melo",
+      "rua": "Rua Abílio José Fritz",
+      "quartos": 3,
+      "banheiro": 2,
+      "vagas_garagem": 0,
+      "codigo": "C-002",
+      "preco": 500,
+      "descricao": "hbchbeebhcjbhecbhae\nubcwhcwhhcw\nhbucubhbeehb \nbhecubebue",
+      "images": [
+        "https://res.cloudi,nary.com/dj7uoxm0a/image/upload/v1760525736/sb0zimq8s7xdutbn18ks.jpg",
+        "https://res.cloudinary.com/dj7uoxm0a/image/upload/v1760525746/fe0xjpyksakeva6liqvr.jpg"
+      ],
+      "id": 9,
+      "visualizacoes": 13,
+      "ordem": 7,
+      "createdAt": "2025-10-15T10:55:51.107Z"
+    }
+  ]
+}

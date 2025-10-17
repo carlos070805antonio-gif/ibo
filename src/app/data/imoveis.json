@@ -1,0 +1,58 @@
+{
+  "imoveis": [
+    {
+      "id": 1,
+      "tipo": "apartamento",
+      "transacao": "venda",
+      "cidade": "Muriaé",
+      "bairro": "Centro",
+      "quartos": 3,
+      "banheiro": 2,
+      "vagas_garagem": 2,
+      "codigo": "AP001",
+      "preco": 350000,
+      "descricao": "Apartamento moderno no coração da cidade, próximo a comércios e serviços. Possui acabamento de primeira linha, varanda gourmet e área de lazer completa.",
+      "images": [
+        "https://exemplo.com/imagem1.jpg",
+        "https://exemplo.com/imagem2.jpg",
+        "https://exemplo.com/imagem3.jpg"
+      ],
+      "createdAt": "2024-01-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "tipo": "casa",
+      "transacao": "locação",
+      "cidade": "Muriaé",
+      "bairro": "Santa Terezinha",
+      "quartos": 4,
+      "banheiro": 3,
+      "vagas_garagem": 3,
+      "codigo": "CS002",
+      "preco": 2500,
+      "descricao": "Casa espaçosa com quintal amplo, ideal para famílias. Possui churrasqueira, piscina e área verde. Localização privilegiada em bairro residencial tranquilo.",
+      "images": [
+        "https://exemplo.com/casa1.jpg",
+        "https://exemplo.com/casa2.jpg"
+      ],
+      "createdAt": "2024-02-20T14:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "tipo": "loja",
+      "transacao": "venda",
+      "cidade": "Muriaé",
+      "bairro": "Centro",
+      "quartos": 0,
+      "banheiro": 2,
+      "vagas_garagem": 0,
+      "codigo": "LJ003",
+      "preco": 180000,
+      "descricao": "Ponto comercial estratégico no centro da cidade, com grande fluxo de pessoas. Ampla vitrine, estacionamento próximo e infraestrutura completa.",
+      "images": [
+        "https://exemplo.com/loja1.jpg"
+      ],
+      "createdAt": "2024-03-10T09:15:00.000Z"
+    }
+  ]
+}
