@@ -1,62 +1,60 @@
-  // app/admin/imoveis/[id]/edit/page.tsx
-  "use client";
+"use client";
 
-  import { useState, useEffect } from "react";
-  import { useRouter } from "next/navigation";
-  import Link from "next/link";
-  import { toast, Toaster } from "sonner";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { toast, Toaster } from "sonner";
 
-  export default function EditImovelPage({ params }: { params: { id: string } }) {
-    const router = useRouter();
-    const [loading, setLoading] = useState(true);
-    const [uploading, setUploading] = useState(false);
-    const [formData, setFormData] = useState({
-      tipo: "",
-      transacao: "",
-      cidade: "",
-      bairro: "",
-      quartos: "",
-      banheiro: "",
-      vagas_garagem: "",
-      codigo: "",
-      preco: "",
-      descricao: "",
-      images: [] as string[],
-    });
+export default function EditImovelPage({ params }: { params: { id: string } }) {
+  const { id } = params; // agora é apenas objeto, sem await
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
+  const [formData, setFormData] = useState({
+    tipo: "",
+    transacao: "",
+    cidade: "",
+    bairro: "",
+    quartos: "",
+    banheiro: "",
+    vagas_garagem: "",
+    codigo: "",
+    preco: "",
+    descricao: "",
+    images: [] as string[],
+  });
 
-    useEffect(() => {
-      fetchImovel();
-    }, []);
+  useEffect(() => {
+    fetchImovel();
+  }, []);
 
-    async function fetchImovel() {
-      try {
-        setLoading(true);
-        const res = await fetch(`/api/imoveis/${params.id}`);
-        const data = await res.json();
-        
-        if (data.imovel) {
-          setFormData({
-            tipo: data.imovel.tipo || "",
-            transacao: data.imovel.transacao || "",
-            cidade: data.imovel.cidade || "",
-            bairro: data.imovel.bairro || "",
-            quartos: String(data.imovel.quartos || ""),
-            banheiro: String(data.imovel.banheiro || ""),
-            vagas_garagem: String(data.imovel.vagas_garagem || ""),
-            codigo: data.imovel.codigo || "",
-            preco: String(data.imovel.preco || ""),
-            descricao: data.imovel.descricao || "",
-            images: data.imovel.images || [],
-          });
-        }
-      } catch (error) {
-        toast.error("Erro ao carregar imóvel");
-        console.error(error);
-      } finally {
-        setLoading(false);
+  async function fetchImovel() {
+    try {
+      setLoading(true);
+      const res = await fetch(`/api/imoveis/${id}`);
+      const data = await res.json();
+      if (data.imovel) {
+        setFormData({
+          tipo: data.imovel.tipo || "",
+          transacao: data.imovel.transacao || "",
+          cidade: data.imovel.cidade || "",
+          bairro: data.imovel.bairro || "",
+          quartos: String(data.imovel.quartos || ""),
+          banheiro: String(data.imovel.banheiro || ""),
+          vagas_garagem: String(data.imovel.vagas_garagem || ""),
+          codigo: data.imovel.codigo || "",
+          preco: String(data.imovel.preco || ""),
+          descricao: data.imovel.descricao || "",
+          images: data.imovel.images || [],
+        });
       }
+    } catch (error) {
+      toast.error("Erro ao carregar imóvel");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
-
+  }
     async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
       const files = e.target.files;
       if (!files || files.length === 0) return;
