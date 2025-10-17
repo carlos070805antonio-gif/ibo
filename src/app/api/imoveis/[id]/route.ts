@@ -4,20 +4,21 @@ import { getImovelById, updateImovel, deleteImovel } from "../../../lib/imoveis"
 
 // GET - Buscar imóvel por ID
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
+    const numericId = Number(id);
     
-    if (isNaN(id)) {
+    if (isNaN(numericId)) {
       return NextResponse.json(
         { error: "ID inválido" },
         { status: 400 }
       );
     }
     
-    const imovel = getImovelById(id);
+    const imovel = getImovelById(numericId);
     
     if (!imovel) {
       return NextResponse.json(
@@ -39,20 +40,21 @@ export async function GET(
 // PUT - Atualizar imóvel
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
+    const numericId = Number(id);
     const body = await req.json();
     
-    if (isNaN(id)) {
+    if (isNaN(numericId)) {
       return NextResponse.json(
         { error: "ID inválido" },
         { status: 400 }
       );
     }
     
-    const imovelAtualizado = updateImovel(id, body);
+    const imovelAtualizado = updateImovel(numericId, body);
     
     if (!imovelAtualizado) {
       return NextResponse.json(
@@ -80,19 +82,20 @@ export async function PUT(
 // DELETE - Deletar imóvel
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = Number(params.id);
+    const { id } = await params;
+    const numericId = Number(id);
     
-    if (isNaN(id)) {
+    if (isNaN(numericId)) {
       return NextResponse.json(
         { error: "ID inválido" },
         { status: 400 }
       );
     }
     
-    const sucesso = deleteImovel(id);
+    const sucesso = deleteImovel(numericId);
     
     if (!sucesso) {
       return NextResponse.json(
