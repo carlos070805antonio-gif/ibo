@@ -109,49 +109,49 @@ export default function EditImovelPage({
       toast.info("Imagem removida");
     }
 
-    async function handleSubmit(e: React.FormEvent) {
-      e.preventDefault();
+async function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();
 
-      if (!formData.tipo || !formData.transacao || !formData.cidade || !formData.bairro || !formData.preco) {
-        toast.error("Preencha todos os campos obrigatórios");
-        return;
-      }
+  if (!formData.tipo || !formData.transacao || !formData.cidade || !formData.bairro || !formData.preco) {
+    toast.error("Preencha todos os campos obrigatórios");
+    return;
+  }
 
-      try {
-        const body = {
-          tipo: formData.tipo,
-          transacao: formData.transacao,
-          cidade: formData.cidade,
-          bairro: formData.bairro,
-          quartos: Number(formData.quartos),
-          banheiro: Number(formData.banheiro) || 0,
-          vagas_garagem: Number(formData.vagas_garagem) || 0,
-          codigo: formData.codigo,
-          preco: Number(formData.preco),
-          descricao: formData.descricao,
-          images: formData.images,
-        };
+  try {
+    const body = {
+      tipo: formData.tipo,
+      transacao: formData.transacao,
+      cidade: formData.cidade,
+      bairro: formData.bairro,
+      quartos: Number(formData.quartos),
+      banheiro: Number(formData.banheiro) || 0,
+      vagas_garagem: Number(formData.vagas_garagem) || 0,
+      codigo: formData.codigo,
+      preco: Number(formData.preco),
+      descricao: formData.descricao,
+      images: formData.images,
+    };
 
-        const res = await fetch(`/api/imoveis/${params.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
+    const res = await fetch(`/api/imoveis/${id}`, {  // ← MUDANÇA AQUI: params.id → id
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
 
-        if (!res.ok) {
-          toast.error("Erro ao atualizar imóvel");
-          return;
-        }
-
-        toast.success("Imóvel atualizado com sucesso!");
-        setTimeout(() => {
-          router.push("/admin/imoveis");
-        }, 1500);
-      } catch (error) {
-        toast.error("Erro ao atualizar imóvel");
-        console.error(error);
-      }
+    if (!res.ok) {
+      toast.error("Erro ao atualizar imóvel");
+      return;
     }
+
+    toast.success("Imóvel atualizado com sucesso!");
+    setTimeout(() => {
+      router.push("/admin/imoveis");
+    }, 1500);
+  } catch (error) {
+    toast.error("Erro ao atualizar imóvel");
+    console.error(error);
+  }
+}
 
     if (loading) {
       return (
